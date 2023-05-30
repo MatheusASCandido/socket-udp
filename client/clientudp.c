@@ -256,17 +256,21 @@ int main(int argc, char *argv[]) {
                 }
 
                 // Recebendo e escrevendo os dados do arquivo
-                while ((n = recvfrom(sockfd, (char *)buffer, MAXLINE, MSG_WAITALL, (struct sockaddr *)&servaddr, &len)) > 0) {
+                while (1) {
+                    n = recvfrom(sockfd, (char *)buffer, MAXLINE, MSG_WAITALL, (struct sockaddr *)&servaddr, &len);
                     write(file_receive, buffer, n);
+                    printf("oi, %d\n", n);
+                    if (n < MAXLINE){
+                        break;
+                    }
                 }
-
                 close(file_receive);
                 printf("Arquivo recebido e salvo.\n");
-                
+                break;
+
             case 9:
                 exit(1);
                 break;
-            
         }
         bzero(buff, sizeof(buff));
         n = recvfrom(sockfd, (char *)buffer, MAXLINE, MSG_WAITALL, (struct sockaddr *)&servaddr, &len);
