@@ -39,23 +39,11 @@ int main(int argc, char *argv[]) {
 
     int n, len;
 
-
-
-    /*printf("Digite a mensagem para enviar ao servidor: ");
-    fgets(buffer, MAXLINE, stdin);
-    buffer[strcspn(buffer, "\n")] = '\0';
-
-    sendto(sockfd, (const char *)buffer, strlen(buffer), MSG_CONFIRM, (const struct sockaddr *)&servaddr, sizeof(servaddr));
-    printf("Mensagem enviada.\n");
-
-    n = recvfrom(sockfd, (char *)buffer, MAXLINE, MSG_WAITALL, (struct sockaddr *)&servaddr, &len);
-    buffer[n] = '\0';
-    printf("Servidor: %s\n", buffer);*/
     char buff[MAX];
     int opcao=0;
     for (;;) {
         bzero(buff, sizeof(buff));
-        printf("\nEscolha a opção desejada : \n1-Cadastrar novo perfil\n2-Listar as pessoas formadas em um determinado curso\n3-Listar as pessoas com determinada habilidade\n4-Listar pessoas formadas em determinado ano\n5-Listar todos os perfis\n6-Consultar perfil via email\n7-Remover perfil\n8-Fazer dowload da imagem de perfil usando o indetificador(email)\n9-Sair\n");
+        printf("\nEscolha a opção desejada : \n1-Cadastrar novo perfil\n2-Listar as pessoas formadas em um determinado curso\n3-Listar as pessoas com determinada habilidade\n4-Listar pessoas formadas em determinado ano\n5-Listar todos os perfis\n6-Consultar perfil via email\n7-Remover perfil\n8-Fazer donwload da imagem de perfil usando o indentificador (email)\n9-Sair\n");
         scanf("%d",&opcao);
         char variavel[100];
         char str[100];
@@ -65,33 +53,26 @@ int main(int argc, char *argv[]) {
                 strcat(buff,"1");
                 strcat(buff,":");
 
-                //char variavel[100];
-                //char str[100];
                 printf("Digite o Email do usuário: ");
                 scanf("%s",variavel);
                 strcat(buff,variavel);
                 strcat(buff,",");
                 
-
                 printf("Digite o Nome do usuário: ");
                 scanf("%s",variavel);
                 strcat(buff,variavel);
                 strcat(buff,",");
                
-
-
                 printf("Digite o Sobrenome do usuário: ");
                 scanf("%s",variavel);
                 strcat(buff,variavel);
                 strcat(buff,",");
               
-
                 printf("Digite a Residência do usuário: ");
                 scanf("%s",variavel);
                 strcat(buff,variavel);
                 strcat(buff,",");
                 
-
                 printf("Digite a Formação Acadêmica do usuário: ");
                 char aux[100];
                 fgets(aux, 100, stdin);
@@ -100,20 +81,16 @@ int main(int argc, char *argv[]) {
                 strcat(buff,str);
                 strcat(buff,",");
                
-
                 printf("Digite o Ano de Formação do usuário: ");
                 scanf("%s",variavel);
                 strcat(buff,variavel);
                 strcat(buff,",");
                 
-
                 printf("Digite as Habilidades do usuário: ");
-               
                 fgets(str, 100, stdin);
                 fgets(str, 100, stdin);
                 strcat(buff,str);
                 
-
                 //pega as infos necessarias e vai usando o strcat pra add no buff e sempre separa com ":" cada info
                 //pedir as habilidades separadas por ";" por conta do csv
                 sendto(sockfd, (const char *)buff, strlen(buff), MSG_CONFIRM, (const struct sockaddr *)&servaddr, sizeof(servaddr));
@@ -123,10 +100,7 @@ int main(int argc, char *argv[]) {
                 buffer[n] = '\0';
                 printf("Servidor: %s\n", buffer);
         
-
-
-                //colocar a logica para a imagem de perfil
-                // Solicitando o nome do arquivo
+                // Solicitando o nome do arquivo para a imagem de perfil
                 printf("Digite o nome do arquivo para enviar ao servidor: ");
                 fgets(buffer, MAXLINE, stdin);
                 buffer[strcspn(buffer, "\n")] = '\0';
@@ -159,10 +133,9 @@ int main(int argc, char *argv[]) {
                 fgets(str, 100, stdin);
                 printf("\n");
                 strcat(buff,str);
-                printf("%s\n",buff);
+
                 //pega as infos necessarias e vai usando o strcat pra add no buff e sempre separa com ":" cada info
                 sendto(sockfd, (const char *)buff, strlen(buff), MSG_CONFIRM, (const struct sockaddr *)&servaddr, sizeof(servaddr));
-                printf("Mensagem enviada.\n");
                 break;
             case 3: ;
                 //habilidade
@@ -177,7 +150,6 @@ int main(int argc, char *argv[]) {
 
                 //pega as infos necessarias e vai usando o strcat pra add no buff e sempre separa com ":" cada info
                 sendto(sockfd, (const char *)buff, strlen(buff), MSG_CONFIRM, (const struct sockaddr *)&servaddr, sizeof(servaddr));
-                printf("Mensagem enviada.\n");
                 break;
             case 4: 
                 //ano
@@ -192,7 +164,6 @@ int main(int argc, char *argv[]) {
 
                 //pega as infos necessarias e vai usando o strcat pra add no buff e sempre separa com ":" cada info
                 sendto(sockfd, (const char *)buff, strlen(buff), MSG_CONFIRM, (const struct sockaddr *)&servaddr, sizeof(servaddr));
-                printf("Mensagem enviada.\n");
                 break;
             case 5:
                 //todos
@@ -200,7 +171,6 @@ int main(int argc, char *argv[]) {
                 strcat(buff,":");
                 //pega as infos necessarias e vai usando o strcat pra add no buff e sempre separa com ":" cada info
                 sendto(sockfd, (const char *)buff, strlen(buff), MSG_CONFIRM, (const struct sockaddr *)&servaddr, sizeof(servaddr));
-                printf("Mensagem enviada.\n");
                 break;
             case 6:
                 //via email
@@ -216,7 +186,6 @@ int main(int argc, char *argv[]) {
 
                 //pega as infos necessarias e vai usando o strcat pra add no buff e sempre separa com ":" cada info
                 sendto(sockfd, (const char *)buff, strlen(buff), MSG_CONFIRM, (const struct sockaddr *)&servaddr, sizeof(servaddr));
-                printf("Mensagem enviada.\n");
                 break;
             case 7:
                 strcat(buff,"7");
@@ -230,7 +199,6 @@ int main(int argc, char *argv[]) {
 
                 //pega as infos necessarias e vai usando o strcat pra add no buff e sempre separa com ":" cada info
                 sendto(sockfd, (const char *)buff, strlen(buff), MSG_CONFIRM, (const struct sockaddr *)&servaddr, sizeof(servaddr));
-                printf("Mensagem enviada.\n");
                 break;
             case 8:
                 strcat(buff,"8");
@@ -242,7 +210,6 @@ int main(int argc, char *argv[]) {
                 strcat(buff,variavel);
 
                 sendto(sockfd, (const char *)buff, strlen(buff), MSG_CONFIRM, (const struct sockaddr *)&servaddr, sizeof(servaddr));
-                printf("Mensagem enviada.\n");
 
                 n = recvfrom(sockfd, (char *)buffer, MAXLINE, MSG_WAITALL, (struct sockaddr *)&servaddr, &len);
                 buffer[n] = '\0';
@@ -259,7 +226,6 @@ int main(int argc, char *argv[]) {
                 while (1) {
                     n = recvfrom(sockfd, (char *)buffer, MAXLINE, MSG_WAITALL, (struct sockaddr *)&servaddr, &len);
                     write(file_receive, buffer, n);
-                    printf("oi, %d\n", n);
                     if (n < MAXLINE){
                         break;
                     }

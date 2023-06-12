@@ -8,8 +8,6 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-//#include </home/ic-unicamp/Documentos/socket-udp/server/func.h>
-//#include <./server/func.h>
 #include "func.h"
 
 #define PORT 5054
@@ -49,12 +47,6 @@ int main() {
 
     while(1){
     int n;
-    /*n = recvfrom(sockfd, (char *)buffer, MAXLINE, MSG_WAITALL, (struct sockaddr *)&cliaddr, &len);
-    buffer[n] = '\0';
-    printf("Cliente: %s\n", buffer);
-
-    sendto(sockfd, (const char *)message, strlen(message), MSG_CONFIRM, (const struct sockaddr *)&cliaddr, len);
-    printf("Mensagem enviada.\n");*/
     char buff[MAX];
     char buff2[MAX];
     // infinite loop for chat
@@ -97,7 +89,6 @@ int main() {
             while (1) {
                 n = recvfrom(sockfd, (char *)buff, MAXLINE, MSG_WAITALL, (struct sockaddr *)&cliaddr, &len);
                 write(file, buff, n);
-                printf("oi, %d\n", n);
                 if (n < MAXLINE){
                     break;
                 }
@@ -203,8 +194,6 @@ int main() {
         n = 0;
    
         // and send that buffer to client
-        /*write(connfd, buff, sizeof(buff));
-        bzero(buff, MAX);*/
         sendto(sockfd, (const char *)buff, strlen(buff), MSG_CONFIRM, (const struct sockaddr *)&cliaddr, len);
         printf("Mensagem enviada.\n");
         

@@ -1,7 +1,4 @@
 Email,Nome,Sobrenome,Residência,Formação Acadêmica,Ano de Formatura,Habilidades,Imagem
-pedro@gmail.com,pedro,hori,campinas,computação,2023,python
-s,s,s,s,s,s,s
-q,q,q,q,q,q,q
-t,t,t,t,t,t,t
-b,b,b,b,b,b,b
-l,l,l,l,l,l,l,pedro
+pedro@gmail.com,pedro,hori,Campinas,computação,2023,python, pedro
+samuel@gmail.com,samuel,bueno, Campinas,engenharia mecatrônica, 2020, Cálculo; python, samuel.jpeg
+joao.victor@gmail.com,joao,victor,Campinas,Matemática,2024,Cálculo; GA,joao.jpg

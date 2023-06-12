@@ -18,7 +18,6 @@ void novo_user(char* Nome){
         printf("Can't open file\n");
 
     else {
-        //printf("mostrando o nome:%s\n", Nome);
         fprintf(fp, "%s", Nome);
         fclose(fp);
     }
@@ -27,7 +26,6 @@ void novo_user(char* Nome){
 char *determinado_curso(char* curso, char* aux){
     FILE* fp = fopen("database.csv", "r");
     curso = strtok(curso, "\n");
-    //printf("entrou: %s\n", curso);
 
     if (!fp)
         printf("Can't open file\n");
@@ -89,7 +87,6 @@ char *determinado_curso(char* curso, char* aux){
 char *determinada_habilidade(char* habilidade, char* aux){
     FILE* fp = fopen("database.csv", "r");
     habilidade = strtok(habilidade, "\n");
-    //printf("entrou: %s\n", curso);
 
     if (!fp)
         printf("Can't open file\n");
@@ -129,7 +126,6 @@ char *determinada_habilidade(char* habilidade, char* aux){
 
 
                 if (column == 6) {
-                    //printf("%s %s\n",value, habilidade);
                     if(strstr(value, habilidade)!=NULL){
                         printf("Email: %s; Nome: %s\n", email, nome);
                         strcat(aux,"Email: ");
@@ -152,7 +148,6 @@ char *determinada_habilidade(char* habilidade, char* aux){
 char *determinado_ano(char* ano, char* aux){
     FILE* fp = fopen("database.csv", "r");
     ano = strtok(ano, "\n");
-    //printf("entrou: %s\n", curso);
 
     if (!fp)
         printf("Can't open file\n");
@@ -278,6 +273,10 @@ char *listar_todos(char* aux){
                     printf("Habilidades :");
                     strcat(aux,"Habilidades: ");
                 }
+                if (column == 7) {
+                    printf("Imagem :");
+                    strcat(aux,"Imagem: ");
+                }
   
                 printf("%s\n", value);
                 strcat(aux,value);
@@ -363,7 +362,10 @@ char *consultar_email(char* email, char* aux){
                 if (column == 6 && correto==1) {
                     printf("Habilidades :");
                     strcat(aux,"Habilidades: ");
-
+                }
+                if (column == 6 && correto==1) {
+                    printf("Imagem :");
+                    strcat(aux,"Imagem: ");
                 }
                 if(correto==1){
                     printf("%s\n", value);
@@ -383,7 +385,6 @@ char *consultar_email(char* email, char* aux){
 char *imagem(char* email, char* aux){
     FILE* fp = fopen("database.csv", "r");
     email = strtok(email, "\n");
-    //printf("entrou: %s\n", curso);
 
     if (!fp)
         printf("Can't open file\n");
@@ -437,7 +438,6 @@ char *imagem(char* email, char* aux){
 int pegalinha_remove(char* email){
     FILE* fp = fopen("database.csv", "r");
     email = strtok(email, "\n");
-    //printf("entrou: %s\n", curso);
     int linha = -1;
 
     if (!fp)
@@ -487,8 +487,6 @@ char *pegaimagem_remove(int linha, char* aux)
     FILE* fp = fopen("database.csv", "r");
     char img[100];
 
-    //printf("entrou: %s\n", curso);
-
     if (!fp)
         printf("Can't open file\n");
 
@@ -518,7 +516,6 @@ char *pegaimagem_remove(int linha, char* aux)
             
             while (value) {
                 if (column == 7) {
-                    //printf("Value:%s ", value);
                     strcpy(img, value);
 
                 }
