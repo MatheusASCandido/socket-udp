@@ -482,6 +482,57 @@ int pegalinha_remove(char* email){
     return (linha);
 }
 
+char *pegaimagem_remove(int linha, char* aux)
+{
+    FILE* fp = fopen("database.csv", "r");
+    char img[100];
+
+    //printf("entrou: %s\n", curso);
+
+    if (!fp)
+        printf("Can't open file\n");
+
+    else {
+ // Here we have taken size of
+        // array 1024 you can modify it
+        char buffer[1024];
+  
+        int row = 0;
+        int column = 0;
+
+  
+        while (fgets(buffer,
+                     1024, fp)) {
+            column = 0;
+            row++;
+  
+            // To avoid printing of column
+            // names in file can be changed
+            // according to need
+            if (row != linha)
+                continue;
+  
+            // Splitting the data
+            char* value = strtok(buffer, ",");
+            int correto = 0;
+            
+            while (value) {
+                if (column == 7) {
+                    //printf("Value:%s ", value);
+                    strcpy(img, value);
+
+                }
+                value = strtok(NULL, ",");
+                column++;
+            }
+        }
+        fclose(fp);
+    }
+    strcpy(aux, img);
+    return(aux);
+
+}
+
 int remover(int linha){
     FILE* fp = fopen("database.csv", "r");
      FILE *input = fopen("database.csv", "r"); //Arquivo de entrada.

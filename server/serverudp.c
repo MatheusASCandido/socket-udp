@@ -147,7 +147,21 @@ int main() {
             memcpy(email_r, &buff[2], sizeof(buff)-2);
             int linha = pegalinha_remove(email_r);
             if (linha!=-1){
+                char Img[100];
+                char aux[100];
+                strcpy(Img, (pegaimagem_remove(linha, aux)) );
                 remover(linha);
+                Img[strcspn(Img,"\n")] = 0;
+
+                int retorno;
+                retorno = remove(Img);
+                if (retorno == 0){
+                    printf("imagem deletada\n");
+                }
+                else{
+                    printf("imagem não deletada\n");
+                }
+
                 strcpy(buff,"Usuário ");
                 strcat(buff,email_r);
                 strcat(buff," removido.");
